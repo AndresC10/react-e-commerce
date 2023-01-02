@@ -1,0 +1,168 @@
+.home {
+    display: flex;
+    flex: 1 1;
+}
+
+.home-aside {
+    display: none;
+}
+
+
+.main-container {
+    margin: 0 auto;
+    padding: 50px 40px 40px 40px;
+}
+
+.search-box {
+    position: relative;
+    margin: 0 10px 30px;
+}
+
+.search-box__form {
+    display: flex;
+    margin-bottom: 15px;
+    max-width: 900px;
+}
+
+.search-box__form__input {
+    flex: 1 1;
+    border: 1px solid #dcd9d9;
+    padding: 5px 14px;
+    font-size: .9rem;
+}
+
+.search-box__form__input::placeholder {
+    color: #c7c7c7;
+}
+
+.search-box__form__btn {
+    width: 45px;
+    height: 45px;
+    border: none;
+    background: #f85555;
+    color: #fff;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.filter-button {
+    display: block;
+    margin: 0 0 10px auto;
+    background: transparent;
+    font-size: .95rem;
+    color: #c7c7c7;
+    display: flex;
+}
+
+.filter-button__i {
+    margin-right: 11px;
+    font-size: 1.3rem;
+}
+
+.filters-modal-container {
+    position: fixed;
+    background: #fff;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    overflow: auto;
+    width: 300px;
+    padding: 10px 13px 50px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    transform: translateX(100%);
+    transform-origin: top right;
+    transition: .7s all ease;
+    z-index: 99;
+}
+
+.filters-modal-container.open {
+    transform: translateX(0);
+}
+
+.filter-modal__btn {
+    display: block;
+    margin: 0 0 15px auto;
+    background: transparent;
+    font-size: 1.3rem;
+}
+
+.filters-modal__h5 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.products__li {
+    width: 100%;
+    padding: 20px 10px;
+}
+
+@media (min-width: 576px) {
+    .products__li {
+        width: 50%;
+    }
+}
+
+@media (min-width: 992px) {
+    .home {
+        display: flex;
+        flex: 1 1;
+    }
+
+    .home section {
+        max-width: none;
+        flex: 1 1;
+    }
+
+    .home-aside {
+        display: block;
+        padding: 50px 20px 50px 20px;
+        width: 300px;
+    }
+
+    .filters-container {
+        position: fixed;
+    }
+
+    .filter-button {
+        display: none;
+    }
+
+}
+
+@media (min-width: 1200px) {
+    .products__li {
+        width: 33.3333333%;
+    }
+}
+
+@media (min-width: 1300px) {
+    .search-box {
+        margin: 0 30px 40px;
+    }
+
+    .products__li {
+        padding: 30px;
+    }
+
+    .search-box__form {
+        margin: 0 auto;
+    }
+
+    .search-box__form__btn {
+        width: 100px;
+    }
+}
