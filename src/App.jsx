@@ -7,6 +7,7 @@ import { getAllProducts } from './store/slices/products.slice'
 import ProductInfo from './pages/ProductInfo'
 import Login from './pages/Login'
 import { getUserCart } from './store/slices/cart.slice'
+import Navbar from './components/shared/Navbar'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
