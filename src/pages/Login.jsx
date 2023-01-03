@@ -48,7 +48,9 @@ const Login = () => {
             <div className="login__header">
              { !error ? <h2 className="login__text">
                 Welcome! Enter your email and password to continue
-                </h2> : <Error/>
+                </h2> : <Error 
+                children="Email or password incorrect"
+                />
               }
             </div>
             <form className="login__form" onSubmit={handleSubmit(submit)}>

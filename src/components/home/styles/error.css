@@ -8,10 +8,20 @@
     width: 50vw;
     max-width: 500px;
     height: 100vh;
-    background: red;
+    background: #ff4040;
     color: white;
     border-radius: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.623);
+    animation: Error__container--animation 0.5s ease-in-out;
+}
+
+@keyframes Error__container--animation {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
  
 .Error__title {
