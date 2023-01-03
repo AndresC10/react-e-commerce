@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './styles/navbar.css'
 
 const Navbar = ({ cartModal, setCartModal }) => {
@@ -8,8 +9,10 @@ const Navbar = ({ cartModal, setCartModal }) => {
                 <div className='navbar__title'>
                     <strong>e-commerce</strong>
                 </div>
-                <button className='navbar__icon'>
+                <button className={`navbar__icon`}>
+                    <Link to={'/login'}>
                     <i className="fa-regular fa-user"></i>
+                    </Link>
                 </button>
                 <button className='navbar__icon'>
                     <i className="fa-solid fa-box-archive"></i>
