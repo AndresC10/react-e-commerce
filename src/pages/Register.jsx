@@ -25,6 +25,8 @@ const Register = () => {
     });
   };
 
+  
+
   return (
     <div className="register__container">
       <div className="register__header">
@@ -82,14 +84,14 @@ const Register = () => {
           />
         </div>
         <div className="form__container--passwordConfirmation">
-          <label className="form__label--passwordConfirmation" htmlFor="passwordConfirmation">
-          Confirm Password
+          <label className="form__label--passwordConfirmation" htmlFor="phone">
+          Phone Number
           </label>
           <input
             className="form__input--passwordConfirmation"
-            type="password"
-            id="passwordConfirmation"
-            {...register("passwordConfirmation")}
+            type="text"
+            id="phone"
+            {...register("phone")}
           />
         </div>
         <button className="form__signUp--btn">Sign Up</button>

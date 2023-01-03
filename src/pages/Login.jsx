@@ -8,10 +8,13 @@ import "../components/home/styles/login.css";
 const Login = () => {
   const { handleSubmit, register, reset } = useForm();
 
-  const [token, setToken] = useState();
-  const [user, setUser] = useState({});
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   const [error, setError] = useState(false);
-    
+
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem("user")));
+  }, []);
 
   const submit = (data) => {
     const URL = "https://e-commerce-api.academlo.tech/api/v1/users/login";
@@ -20,13 +23,16 @@ const Login = () => {
       .then((res) => {
         console.log(res.data.data);
         localStorage.setItem("token", res.data.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.data.user));
         setToken(res.data.data.token);
         setUser(res.data.data.user);
-        setError(false);
       })
       .catch((err) => {
         console.log(err)
         setError(true);
+        setTimeout(() => {
+            setError(false);
+            }, 5000);
     });
     reset({
       email: "",
@@ -36,10 +42,13 @@ const Login = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     setToken(null);
     };
 
+   
 
+  
   return (
     <>
       <div className="login__container">
@@ -49,7 +58,7 @@ const Login = () => {
              { !error ? <h2 className="login__text">
                 Welcome! Enter your email and password to continue
                 </h2> : <Error 
-                children="Email or password incorrect"
+                children="Incorrect email or password, enter a valid User"
                 />
               }
             </div>
@@ -90,13 +99,13 @@ const Login = () => {
           </>
         )}
         {token && (
-          // Mostrar nombre del usuario aquí
+            
           <div className="loginUser__container">
             <div className="loginUser__icon">
                 <i className="fa-regular fa-user"></i>
             </div>
             <h1 className="loginUser__title">¡Welcome!</h1>
-            <h3 className="loginUser__info">{` ${user.firstName} ${user.lastName}`}</h3>
+            <h3 className="loginUser__info">{` ${user?.firstName} ${user?.lastName}`}</h3>
             <button className="loginUser__btn" onClick={handleLogout}>Log Out</button>
           </div>
         )}
