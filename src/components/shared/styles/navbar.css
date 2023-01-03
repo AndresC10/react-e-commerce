@@ -1,14 +1,5 @@
-.navbar {
+.navbar-container {
     height: 60px;
-}
-
-.navbar nav {
-    display: flex;
-    justify-content: space-between;
-    background: #fff;
-}
-
-.navbar .fixed {
     position: fixed;
     top: 0;
     left: 0;
@@ -16,7 +7,14 @@
     z-index: 99;
 }
 
-.navbar nav .title {
+.navbar__nav {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+}
+
+
+.navbar__title {
     color: #f85555;
     font-weight: 700;
     font-size: 1.5rem;
@@ -25,12 +23,12 @@
     padding: 14px 20px;
 }
 
-.navbar nav .title strong {
+.navbar__title strong {
     cursor: pointer;
     color: inherit;
 }
 
-.navbar nav .icon {
+.navbar__icon {
     width: 15%;
     text-align: center;
     padding: 14px;
@@ -41,78 +39,24 @@
     line-height: 0;
 }
 
-.cart-modal {
-    position: fixed;
-    right: -300px;
-    top: 60px;
-    bottom: 0;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    width: 300px;
-    background: #fff;
-    transition: .5s all;
-    z-index: 9;
+.red {
+    color: #f85555;
 }
-
-.cart-modal.open {
-    right: 0;
-}
-
-.login-modal {
-    background: #fff;
-    padding: 20px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    width: 300px;
-    position: absolute;
-    right: 20px;
-    transform: scale(0);
-    transform-origin: top;
-    transition: .5s ease-in-out;
-    z-index: 9;
-    max-height: 90vh;
-}
-
-.login-modal.open {
-    transform: scale(1);
-}
-
-
-@media (min-width: 568px) {
-    .login-modal {
-        right: 20%;
-    }
-}
-
 
 @media (min-width: 992px) {
-    .navbar nav .title {
+    .navbar__title {
         font-size: 2rem;
     }
 
-    .navbar nav {
+    .navbar__nav {
         border-bottom: 1px solid #dcd9d9;
     }
 
-    .navbar {
+    .navbar-container {
         height: 70px;
     }
 
-    .cart-modal {
-        top: 70px;
-    }
-
-    .navbar nav .icon {
+    .navbar__icon {
         border-left: 1px solid #dcd9d9;
-    }
-}
-
-@media (min-width: 1100px) {
-    .login-modal {
-        right: 25%;
-    }
-}
-
-@media (min-width: 1300px) {
-    .login-modal {
-        right: 28%;
     }
 }

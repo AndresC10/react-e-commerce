@@ -5,14 +5,17 @@ import Navbar from '../components/shared/Navbar'
 import CardProduct from '../components/home/CardProduct'
 import Filters from '../components/home/Filters'
 import '../components/home/styles/home.css'
+import Cart from '../components/home/Cart'
 
 const Home = () => {
 
     const { register, handleSubmit } = useForm()
 
     const products = useSelector(state => state.products)
+    const cart = useSelector(state => state.cart)
+    console.log(cart)
+    console.log(products)
 
-    const [categories, setCategories] = useState()
     const [filterModal, setFilterModal] = useState(false)
     const [filter, setFilter] = useState()
     const [filteredProducts, setFilteredProducts] = useState()
@@ -20,6 +23,7 @@ const Home = () => {
     const [priceB, setPriceB] = useState(0)
     const [searchCriteria, setSearchCriteria] = useState()
 
+    const [cartModal, setCartModal] = useState(false)
 
     useEffect(() => {
         if (products) {
@@ -36,10 +40,8 @@ const Home = () => {
 
     const filteringByPrice = (e) => {
         if (priceB !== 0) {
-            console.log('hola')
             return priceA <= e.price && e.price <= priceB
         } else {
-            console.log('hola1')
             return priceB <= e.price
         }
     }
@@ -58,7 +60,13 @@ const Home = () => {
 
     return (
         <>
-            <Navbar />
+            <Navbar
+                cartModal={cartModal}
+                setCartModal={setCartModal}
+            />
+            <Cart
+                cartModal={cartModal}
+            />
             <div className='home'>
                 <aside className='home-aside'>
                     <Filters

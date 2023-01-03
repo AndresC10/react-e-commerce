@@ -18,5 +18,7 @@ export const getUserCart = () => (dispatch) => {
     const URL = `https://e-commerce-api.academlo.tech/api/v1/cart`
     axios.get(URL, getConfig())
         .then(res => dispatch(setCart(res.data.data.cart.products)))
-        .catch(err => console.log(err))
+        .catch(err => {
+            dispatch(setCart(null))
+        })
 }
