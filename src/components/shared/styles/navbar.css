@@ -15,6 +15,7 @@
 
 
 .navbar__title {
+    
     color: #f85555;
     font-weight: 700;
     font-size: 1.5rem;
@@ -23,10 +24,22 @@
     padding: 14px 20px;
 }
 
+
 .navbar__title strong {
+    font-style: none;
     cursor: pointer;
     color: inherit;
+    transition: color 0.3s ease;
 }
+
+.navbar__title strong:hover {
+    color: #fd5757c7;
+}
+
+.navbar__title strong:active {
+    color: #0245c2;
+}
+
 
 .navbar__icon {
     width: 15%;
