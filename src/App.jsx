@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { getAllProducts } from './store/slices/products.slice'
 import ProductInfo from './pages/ProductInfo'
 import Login from './pages/Login'
+import Register from './pages/Register'
 import { getUserCart } from './store/slices/cart.slice'
 import Navbar from './components/shared/Navbar'
 
@@ -33,6 +34,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
         <Route path='/product/:id' element={<ProductInfo />} />
       </Routes>
     </div>
