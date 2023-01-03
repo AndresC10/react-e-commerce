@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import "../components/home/styles/login.css";
 
 const Login = () => {
@@ -57,7 +58,7 @@ const Login = () => {
         <button className="form__login--btn">Login</button>
         <div className="form__logout--container">
             <p className="form__logout--text">Don't have an account?</p>
-            <a className="form__logout--link" href="">Sign Up</a>
+            <Link className="form__logout--link" to={'/register'}>Sign Up</Link>
         </div>
       </form>
     </div>
