@@ -183,7 +183,8 @@
 }
 
 .loginUser__btn {
-    width: 90%;
+    width: 40vw;
+    max-width: 300px;
     padding: 0.5em 0;
     height: 40px;
     border: none;

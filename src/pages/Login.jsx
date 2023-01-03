@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import Error from "../components/Error";
 import "../components/home/styles/login.css";
 
 const Login = () => {
@@ -9,6 +10,7 @@ const Login = () => {
 
   const [token, setToken] = useState();
   const [user, setUser] = useState({});
+  const [error, setError] = useState(false);
     
 
   const submit = (data) => {
@@ -20,8 +22,12 @@ const Login = () => {
         localStorage.setItem("token", res.data.data.token);
         setToken(res.data.data.token);
         setUser(res.data.data.user);
+        setError(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err)
+        setError(true);
+    });
     reset({
       email: "",
       password: "",
@@ -33,11 +39,6 @@ const Login = () => {
     setToken(null);
     };
 
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        setToken(token);
-    }, []);
-
 
   return (
     <>
@@ -45,9 +46,10 @@ const Login = () => {
         {!token && (
           <>
             <div className="login__header">
-              <h2 className="login__text">
+             { !error ? <h2 className="login__text">
                 Welcome! Enter your email and password to continue
-              </h2>
+                </h2> : <Error/>
+              }
             </div>
             <form className="login__form" onSubmit={handleSubmit(submit)}>
               <h1 className="login__icon">
@@ -93,7 +95,7 @@ const Login = () => {
             </div>
             <h1 className="loginUser__title">¡Welcome!</h1>
             <h3 className="loginUser__info">{` ${user.firstName} ${user.lastName}`}</h3>
-            <button className="loginUser__btn" onClick={handleLogout}>Cerrar sesión</button>
+            <button className="loginUser__btn" onClick={handleLogout}>Log Out</button>
           </div>
         )}
       </div>
