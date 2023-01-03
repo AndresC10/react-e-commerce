@@ -7,10 +7,10 @@ const Navbar = ({ cartModal, setCartModal }) => {
         <header className='navbar-container'>
             <nav className='navbar__nav'>
                 <div className='navbar__title'>
-                    <strong>e-commerce</strong>
+                   <Link style={{color: '#f85555'}} to={'./'}><strong>E-commerce</strong></Link> 
                 </div>
                 <button className={`navbar__icon`}>
-                    <Link to={'/login'}>
+                    <Link  to={'/login'}>
                     <i className="fa-regular fa-user"></i>
                     </Link>
                 </button>
