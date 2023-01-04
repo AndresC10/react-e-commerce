@@ -15,7 +15,9 @@ const Navbar = ({ cartModal, setCartModal }) => {
                     </Link>
                 </button>
                 <button className='navbar__icon'>
+                    <Link to={'/purchase'}>
                     <i className="fa-solid fa-box-archive"></i>
+                    </Link>
                 </button>
                 <button onClick={() => setCartModal(!cartModal)} className={`navbar__icon ${cartModal && 'red'}`}>
                     <i className="fa-solid fa-cart-shopping"></i>
