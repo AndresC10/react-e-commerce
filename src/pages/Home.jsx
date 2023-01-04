@@ -12,9 +12,7 @@ const Home = () => {
     const { register, handleSubmit } = useForm()
 
     const products = useSelector(state => state.products)
-    const cart = useSelector(state => state.cart)
-    console.log(cart)
-    console.log(products)
+
 
     const [filterModal, setFilterModal] = useState(false)
     const [filter, setFilter] = useState()
