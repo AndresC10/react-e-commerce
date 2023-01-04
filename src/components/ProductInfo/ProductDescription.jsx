@@ -1,8 +1,13 @@
+import axios from 'axios'
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { getUserCart } from '../../store/slices/cart.slice'
+import getConfig from '../../utils/getConfig'
 
 const ProductDescription = ({ product }) => {
 
     const [counter, setCounter] = useState(1)
+    const dispatch = useDispatch()
 
     const handlePlus = () => {
         setCounter(counter + 1)
@@ -12,6 +17,17 @@ const ProductDescription = ({ product }) => {
         if (counter - 1 > 0) {
             setCounter(counter - 1)
         }
+    }
+
+    const handleAddToCart = () => {
+        const URL = 'https://e-commerce-api.academlo.tech/api/v1/cart'
+        const data = {
+            id: product.id,
+            quantity: counter
+        }
+        axios.post(URL, data, getConfig())
+            .then(() => dispatch(getUserCart()))
+            .catch(err => console.log(err))
     }
 
     return (
@@ -25,12 +41,12 @@ const ProductDescription = ({ product }) => {
             <section>
                 <h3>Quantity</h3>
                 <div>
-                    <div onClick={handlePlus}>-</div>
+                    <button onClick={handleMinus}>-</button>
                     <div>{counter}</div>
-                    <div onClick={handleMinus}>+</div>
+                    <button onClick={handlePlus}>+</button>
                 </div>
             </section>
-            <button>Add to cart <i className="fa-solid fa-cart-plus"></i></button>
+            <button onClick={handleAddToCart}>Add to cart <i className="fa-solid fa-cart-plus"></i></button>
         </article>
     )
 }
