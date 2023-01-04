@@ -5,26 +5,31 @@ import { Link } from "react-router-dom";
 import "../components/home/styles/register.css";
 
 const Register = () => {
-  const { handleSubmit, register, reset } = useForm();
+  const { handleSubmit, register } = useForm();
 
-  const submit = (data) => {
+  const submit = async (data) => {
     const URL = "https://e-commerce-api.academlo.tech/api/v1/users";
-    axios
-      .post(URL, data)
-      .then((res) => {
-        console.log(res.data.data);
-        localStorage.setItem("token", res.data.data.token);
-      })
-      .catch((err) => console.log(err));
-    reset({
-      email: "",
-      password: "",
-      name: "",
-      surname: "",
-      passwordConfirmation: "",
-    });
+    try {
+      const res = await axios.post(URL, data);
+      console.log(res.data.data);
+      localStorage.setItem("token", res.data.data.token);
+      reset({
+        email: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+        phone: "",
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
+  const reset = (defaultValues) => {
+    setTimeout(() => {
+      handleReset(defaultValues);
+    }, 2000);
+  };
   
 
   return (
@@ -35,20 +40,10 @@ const Register = () => {
         </h2>
       </div>
       <form className="register__form" onSubmit={handleSubmit(submit)}>
-        <h1 className="register__icon">
-          <i className="fa-regular fa-user"></i>
-        </h1>
-        <div className="form__container--email">
-          <label className="form__label--email" htmlFor="email">
-            Email
-          </label>
-          <input
-            className="form__input--email"
-            type="text"
-            id="email"
-            {...register("email")}
-          />
+        <div className="form__icon--container">
+          <i className="fas fa-user form__icon"></i>
         </div>
+       
         
         <div className="form__container--name">
           <label className="form__label--name" htmlFor="name">
@@ -57,8 +52,8 @@ const Register = () => {
           <input
             className="form__input--name"
             type="text"
-            id="name"
-            {...register("name")}
+            id="firstName"
+            {...register("firstName")}
           />
         </div>
         <div className="form__container--surname">
@@ -68,8 +63,19 @@ const Register = () => {
           <input
             className="form__input--surname"
             type="text"
-            id="surname"
-            {...register("surname")}
+            id="lastName"
+            {...register("lastName")}
+          />
+        </div>
+        <div className="form__container--email">
+          <label className="form__label--email" htmlFor="email">
+            Email
+          </label>
+          <input
+            className="form__input--email"
+            type="text"
+            id="email"
+            {...register("email")}
           />
         </div>
         <div className="form__container--pass">
@@ -94,6 +100,17 @@ const Register = () => {
             {...register("phone")}
           />
         </div>
+        <div className="form__container--role">
+          <label className="form__label--role" htmlFor="phone">
+          Phone Number
+          </label>
+          <input
+            className="form__input--role"
+            type="text"
+            id="role"
+            {...register("role")}
+          />
+        </div>
         <button className="form__signUp--btn">Sign Up</button>
         <div className="form__logout--container">
           <p className="form__logout--text">Already have an account?</p>
@@ -105,5 +122,4 @@ const Register = () => {
 };
 
 export default Register;
-
           
