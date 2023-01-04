@@ -9,6 +9,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import { getUserCart } from './store/slices/cart.slice'
 import Navbar from './components/shared/Navbar'
+import Purchase from './pages/Purchase'
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/product/:id' element={<ProductInfo />} />
+        <Route path='/purchase' element={<Purchase />} />
       </Routes>
     </div>
   )

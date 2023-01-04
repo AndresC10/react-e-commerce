@@ -21,7 +21,6 @@ const Login = () => {
     axios
       .post(URL, data)
       .then((res) => {
-        console.log(res.data.data);
         localStorage.setItem("token", res.data.data.token);
         localStorage.setItem("user", JSON.stringify(res.data.data.user));
         setToken(res.data.data.token);
