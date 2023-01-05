@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import "../components/home/styles/register.css";
+import "../components/register/styles/register.css";
 
 const Register = () => {
   const { handleSubmit, register } = useForm();
@@ -30,7 +30,7 @@ const Register = () => {
       handleReset(defaultValues);
     }, 2000);
   };
-  
+
 
   return (
     <div className="register__container">
@@ -43,8 +43,8 @@ const Register = () => {
         <div className="form__icon--container">
           <i className="fas fa-user form__icon"></i>
         </div>
-       
-        
+
+
         <div className="form__container--name">
           <label className="form__label--name" htmlFor="name">
             Name
@@ -91,7 +91,7 @@ const Register = () => {
         </div>
         <div className="form__container--passwordConfirmation">
           <label className="form__label--passwordConfirmation" htmlFor="phone">
-          Phone Number
+            Phone Number
           </label>
           <input
             className="form__input--passwordConfirmation"
@@ -102,7 +102,7 @@ const Register = () => {
         </div>
         <div className="form__container--role">
           <label className="form__label--role" htmlFor="phone">
-          Phone Number
+            Phone Number
           </label>
           <input
             className="form__input--role"
@@ -122,4 +122,3 @@ const Register = () => {
 };
 
 export default Register;
-          

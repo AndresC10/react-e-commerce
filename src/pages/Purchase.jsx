@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import "../components/home/styles/purchases.css";
+import "../components/purchases/styles/purchases.css";
 
 const Purchase = () => {
   const [purchases, setPurchases] = useState([]);
 
-  useEffect(() =>  {
+  useEffect(() => {
     const URL = "https://e-commerce-api.academlo.tech/api/v1/purchases";
     axios
       .get(URL, {
@@ -17,11 +17,13 @@ const Purchase = () => {
         setPurchases(res.data.data.purchases);
       })
       .catch((err) => console.log(err));
-  }, []); 
+  }, []);
+
+  console.log(purchases)
 
   return (
     <>
-      { purchases && Array.isArray(purchases) && purchases.length > 0 ? 
+      {purchases && Array.isArray(purchases) && purchases.length > 0 ?
         <div className="purchases__container">
           <h1 className="purchases__title">My Purchases</h1>
           <ul className="purchases__list">
@@ -47,7 +49,7 @@ const Purchase = () => {
                           <>
                             <li className="item__title">{product.title}</li>
                             <li className="item__quantity">{product.productsInCart.quantity}</li>
-                            <li className="item__price">$ {product.price}</li>
+                            <li className="item__price">$ {product.price * product.productsInCart.quantity}</li>
                           </>
                         }
                       </ul>
@@ -58,7 +60,7 @@ const Purchase = () => {
             ))}
           </ul>
         </div>
-      :
+        :
         <div className="dont__purchases">
           <h1>
             You don't have any purchases yet

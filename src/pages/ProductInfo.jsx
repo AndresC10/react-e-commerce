@@ -31,8 +31,6 @@ const ProductInfo = () => {
         }
     }, [products, product])
 
-    console.log(product)
-
     const handleMinus = () => {
         const handleTransform = 100 / product?.productImgs.length
         if (slider - handleTransform >= 0) {

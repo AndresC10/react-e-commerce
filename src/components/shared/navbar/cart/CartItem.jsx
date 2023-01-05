@@ -1,8 +1,9 @@
 import axios from 'axios'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserCart } from '../../store/slices/cart.slice'
-import getConfig from '../../utils/getConfig'
+import { getUserCart } from '../../../../store/slices/cart.slice'
+import getConfig from '../../../../utils/getConfig'
+import './styles/cartItem.css'
 
 const CartItem = ({ item }) => {
 
@@ -50,15 +51,12 @@ const CartItem = ({ item }) => {
                         <span className='cart__price'>{item.price}</span>
                     </h3>
                     <div className='cart__amount'>
-                        <div className='cart__amount-content'>
-                            <span onClick={handleMinus} className='cart__remove-item'>-</span>
+                        <div className='cart__amount__box'>
                             <span className='cart__quantity' >{item.productsInCart.quantity}</span>
-                            <span onClick={handlePlus} className='cart__add-item'>+</span>
                         </div>
                         <i onClick={handleDelete} className="cart__delete-item fa-regular fa-trash-can"></i>
                     </div>
                     <span className='cart__subtotal'>
-                        <span className='cart__stock'>{item.quantity}</span>
                         <span className='cart__subtotal-price'>{item.price * item.productsInCart.quantity}</span>
                     </span>
                 </div>

@@ -1,9 +1,9 @@
 import axios from 'axios'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserCart } from '../../store/slices/cart.slice'
-import getConfig from '../../utils/getConfig'
-import CartItem from '../cart/CartItem'
+import { getUserCart } from '../../../store/slices/cart.slice'
+import getConfig from '../../../utils/getConfig'
+import CartItem from './cart/CartItem'
 import './styles/cart.css'
 
 const Cart = ({ cartModal }) => {

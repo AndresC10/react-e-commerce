@@ -2,8 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import Error from "../components/Error";
-import "../components/home/styles/login.css";
+import Error from "../components/login/Error";
+import "../components/login/styles/login.css";
 
 const Login = () => {
   const { handleSubmit, register, reset } = useForm();
@@ -30,9 +30,9 @@ const Login = () => {
         console.log(err)
         setError(true);
         setTimeout(() => {
-            setError(false);
-            }, 5000);
-    });
+          setError(false);
+        }, 5000);
+      });
     reset({
       email: "",
       password: "",
@@ -43,22 +43,22 @@ const Login = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     setToken(null);
-    };
+  };
 
-   
 
-  
+
+
   return (
     <>
       <div className="login__container">
         {!token && (
           <>
             <div className="login__header">
-             { !error ? <h2 className="login__text">
+              {!error ? <h2 className="login__text">
                 Welcome! Enter your email and password to continue
-                </h2> : <Error 
+              </h2> : <Error
                 children="Incorrect email or password, enter a valid User"
-                />
+              />
               }
             </div>
             <form className="login__form" onSubmit={handleSubmit(submit)}>
@@ -98,10 +98,10 @@ const Login = () => {
           </>
         )}
         {token && (
-            
+
           <div className="loginUser__container">
             <div className="loginUser__icon">
-                <i className="fa-regular fa-user"></i>
+              <i className="fa-regular fa-user"></i>
             </div>
             <h1 className="loginUser__title">¡Welcome!</h1>
             <h3 className="loginUser__info">{` ${user?.firstName} ${user?.lastName}`}</h3>
