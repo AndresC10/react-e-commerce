@@ -80,6 +80,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    text-align: center;
 }
 
 .item__quantity {
@@ -101,4 +102,38 @@
     color:rgb(119, 119, 119);
     font-size: 1.5em;
     font-weight: 700;
+}
+
+/* MEDIAS QUERYS */
+
+@media (max-width: 650px) {
+
+    .item__title {
+        position: relative;
+        left: -7vw;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: center;
+        
+    }
+    
+
+    .item__quantity {
+        border: 1px solid rgba(80, 78, 78, 0.568);
+        width: 50px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .item__price {
+        position: relative;
+        left: 15vw;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: center;
+    }
 }
