@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "../components/register/styles/register.css";
 
 const Register = () => {
-  const { handleSubmit, register } = useForm();
+  const { handleSubmit, register, reset } = useForm();
 
   const submit = async (data) => {
     const URL = "https://e-commerce-api.academlo.tech/api/v1/users";
@@ -19,18 +19,17 @@ const Register = () => {
         firstName: "",
         lastName: "",
         phone: "",
+        role: ""
       });
+      setTimeout(() => {
+        localStorage.removeItem("token");
+      }, 1000);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const reset = (defaultValues) => {
-    setTimeout(() => {
-      handleReset(defaultValues);
-    }, 2000);
-  };
-
+ 
 
   return (
     <div className="register__container">
@@ -102,7 +101,7 @@ const Register = () => {
         </div>
         <div className="form__container--role">
           <label className="form__label--role" htmlFor="phone">
-            Phone Number
+            Role
           </label>
           <input
             className="form__input--role"
