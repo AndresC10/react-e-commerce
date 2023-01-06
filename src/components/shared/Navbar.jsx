@@ -49,6 +49,7 @@ const Navbar = () => {
             </header>
             <Cart
                 cartModal={cartModal}
+                setCartModal={setCartModal}
             />
         </>
     )

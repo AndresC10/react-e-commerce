@@ -11,7 +11,6 @@ const Home = () => {
 
     const products = useSelector(state => state.products)
 
-
     const [filterModal, setFilterModal] = useState(false)
     const [filter, setFilter] = useState()
     const [filteredProducts, setFilteredProducts] = useState()
@@ -19,7 +18,7 @@ const Home = () => {
     const [priceB, setPriceB] = useState(0)
     const [searchCriteria, setSearchCriteria] = useState()
 
-    const [cartModal, setCartModal] = useState(false)
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         if (products) {
@@ -52,6 +51,10 @@ const Home = () => {
         } else {
             return true
         }
+    }
+
+    const handleAlert = () => {
+        setError(false)
     }
 
     return (
@@ -91,12 +94,22 @@ const Home = () => {
                                 <CardProduct
                                     key={product.id}
                                     product={product}
+                                    setError={setError}
                                 />
                             </li>
                         ))
                     }
                 </ul>
             </section>
+            {
+                error &&
+                <div className='messege-container'>
+                    <div className='alert error'>
+                        <span className='response__span' onClick={() => handleAlert()}>x</span>
+                        <p className='alert__text'><span className='alert__span'><i className="fa-sharp fa-solid fa-xmark"></i></span>You need to login to add items to cart</p>
+                    </div>
+                </div>
+            }
         </div>
     )
 }

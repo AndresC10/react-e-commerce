@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getUserCart } from '../../store/slices/cart.slice'
@@ -7,7 +7,9 @@ import getConfig from '../../utils/getConfig'
 import './styles/cardProduct.css'
 
 
-const CardProduct = ({ product }) => {
+const CardProduct = ({ product, setError }) => {
+
+    const [token, setToken] = useState()
 
     const navigate = useNavigate()
 
@@ -24,9 +26,14 @@ const CardProduct = ({ product }) => {
             id: product.id,
             quantity: 1
         }
-        axios.post(URL, data, getConfig())
-            .then(() => dispatch(getUserCart()))
-            .catch(err => console.log(err))
+        setToken(localStorage.getItem("token"))
+        if (token) {
+            axios.post(URL, data, getConfig())
+                .then(() => dispatch(getUserCart()))
+                .catch(err => console.log(err))
+        } else {
+            setError(true)
+        }
     }
 
     return (
