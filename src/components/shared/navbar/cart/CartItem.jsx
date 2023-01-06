@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserCart } from '../../../../store/slices/cart.slice'
 import getConfig from '../../../../utils/getConfig'
@@ -7,19 +7,29 @@ import './styles/cartItem.css'
 
 const CartItem = ({ item }) => {
 
+    const token = localStorage.getItem('token')
     const products = useSelector(state => state.products)
-
+    const [counter, setCounter] = useState(item.productsInCart.quantity)
     const dispatch = useDispatch()
 
-    const handlePlus = () => {
-        setCounter(counter + 1)
-    }
-
-    const handleMinus = () => {
-        if (counter - 1 > 0) {
-            setCounter(counter - 1)
-        }
-    }
+    const updateQuantity = (itemId, newQuantity) => {
+        axios.patch(`https://e-commerce-api.academlo.tech/api/v1/cart`, {
+          id: itemId,
+          newQuantity
+        },getConfig(), {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${token}`
+          }
+        })
+          .then(response => {
+            setCounter(newQuantity)
+          })
+          .catch(error => {
+            console.log(error)
+          })
+      }
+      
 
     const handleImg = e => {
         const img = products?.find(p => {
@@ -52,7 +62,9 @@ const CartItem = ({ item }) => {
                     </h3>
                     <div className='cart__amount'>
                         <div className='cart__amount__box'>
-                            <span className='cart__quantity' >{item.productsInCart.quantity}</span>
+                            <p onClick={() => updateQuantity(item.id, counter > 0 ? counter - 1 : '')} className="cart__minus">-</p>
+                            <span className='cart__quantity' >{counter}</span>
+                            <p onClick={() => updateQuantity(item.id, counter + 1)} className="cart__plus ">+</p>
                         </div>
                         <i onClick={handleDelete} className="cart__delete-item fa-regular fa-trash-can"></i>
                     </div>

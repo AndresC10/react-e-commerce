@@ -141,6 +141,26 @@
     color: #f85555;
 }
 
+.cart__minus {
+    background: #f85555;
+    color: #fff;
+    padding: 1px 8px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background .5s ease, color .5s ease;
+}
+
+.cart__plus {
+    background: #f85555;
+    color: #fff;
+    padding: 1px 5px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background .5s ease, color .5s ease;
+}
+
 @media (min-width: 992px) {
     .cart-modal {
         top: 67px;

@@ -66,9 +66,15 @@
 }
 
 .cart__amount__box {
+    position: relative;
+    left: 30px;
     width: 28px;
     border: 1px solid #dcd9d9;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
 }
 
 .cart__add-item {
