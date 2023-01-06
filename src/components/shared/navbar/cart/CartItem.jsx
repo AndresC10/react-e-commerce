@@ -13,23 +13,26 @@ const CartItem = ({ item }) => {
     const dispatch = useDispatch()
 
     const updateQuantity = (itemId, newQuantity) => {
-        axios.patch(`https://e-commerce-api.academlo.tech/api/v1/cart`, {
-          id: itemId,
-          newQuantity
-        },getConfig(), {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `${token}`
-          }
-        })
-          .then(response => {
-            setCounter(newQuantity)
-          })
-          .catch(error => {
-            console.log(error)
-          })
-      }
-      
+
+        if (newQuantity >= 1) {
+            axios.patch(`https://e-commerce-api.academlo.tech/api/v1/cart`, {
+                id: itemId,
+                newQuantity
+            }, getConfig(), {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `${token}`
+                }
+            })
+                .then(response => {
+                    setCounter(newQuantity)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        }
+    }
+
 
     const handleImg = e => {
         const img = products?.find(p => {
@@ -62,7 +65,7 @@ const CartItem = ({ item }) => {
                     </h3>
                     <div className='cart__amount'>
                         <div className='cart__amount__box'>
-                            <p onClick={() => updateQuantity(item.id,counter - 1)} className={`${counter > 1 ? 'cart__minus' : 'cart__minus minus'}`}>-</p>
+                            <p onClick={() => updateQuantity(item.id, counter - 1)} className='cart__minus'>-</p>
                             <span className='cart__quantity' >{counter}</span>
                             <p onClick={() => updateQuantity(item.id, counter + 1)} className="cart__plus ">+</p>
                         </div>

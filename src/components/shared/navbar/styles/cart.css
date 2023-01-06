@@ -48,6 +48,11 @@
     flex: 1 1;
 }
 
+.chekout-total-price__b::before {
+    content: '$';
+    margin-right: 6px;
+}
+
 .checkout-container {
     border-top: 1px solid #dcd9d9;
     padding: 30px 20px;
