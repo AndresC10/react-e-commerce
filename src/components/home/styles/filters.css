@@ -46,18 +46,18 @@
     padding: 20px 0;
 }
 
-.filter__price__form label {
+.filter__price__form div {
     margin-bottom: 17px;
     display: flex;
     align-items: center;
     padding-left: 10px;
 }
 
-.filter__price__form label span {
+.filter__price__form div label {
     width: 20%;
 }
 
-.filter__price__form label input {
+.filter__price__form div input {
     display: block;
     width: 80%;
     border: 1px solid #dcd9d9;

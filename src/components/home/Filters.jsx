@@ -51,14 +51,14 @@ const Filters = ({ setFilter, setFilteredProducts, setPriceA, setPriceB }) => {
                     <i className="filter__icon fa-solid fa-chevron-down"></i>
                 </div>
                 <form className='filter__price__form' onSubmit={handleSubmit(submit)}>
-                    <label htmlFor="priceA">
-                        <span>From</span>
+                    <div htmlFor="priceA">
+                        <label htmlFor="priceA">From</label>
                         <input type="number" id='priceA'  {...register('priceA')} />
-                    </label>
-                    <label htmlFor="priceB">
-                        <span>To</span>
+                    </div>
+                    <div htmlFor="priceB">
+                        <label htmlFor="priceB">To</label>
                         <input type="number" id='priceB'  {...register('priceB')} />
-                    </label>
+                    </div>
                     <button>Filter price</button>
                 </form>
             </div>
