@@ -26,8 +26,8 @@ const CardProduct = ({ product, setError }) => {
             id: product.id,
             quantity: 1
         }
-        setToken(localStorage.getItem("token"))
-        if (token) {
+
+        if (localStorage.getItem("token")) {
             axios.post(URL, data, getConfig())
                 .then(() => dispatch(getUserCart()))
                 .catch(err => console.log(err))

@@ -18,8 +18,6 @@ const Cart = ({ cartModal, setCartModal }) => {
 
     const [error, setError] = useState(false)
 
-    console.log(cart)
-
     const handleCheckOut = () => {
         const URL = 'https://e-commerce-api.academlo.tech/api/v1/purchases'
         const data = {

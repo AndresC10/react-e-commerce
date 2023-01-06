@@ -62,7 +62,7 @@ const CartItem = ({ item }) => {
                     </h3>
                     <div className='cart__amount'>
                         <div className='cart__amount__box'>
-                            <p onClick={() => updateQuantity(item.id, counter > 0 ? counter - 1 : '')} className="cart__minus">-</p>
+                            <p onClick={() => updateQuantity(item.id,counter - 1)} className={`${counter > 1 ? 'cart__minus' : 'cart__minus minus'}`}>-</p>
                             <span className='cart__quantity' >{counter}</span>
                             <p onClick={() => updateQuantity(item.id, counter + 1)} className="cart__plus ">+</p>
                         </div>
