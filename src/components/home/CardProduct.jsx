@@ -9,14 +9,20 @@ import './styles/cardProduct.css'
 
 const CardProduct = ({ product, setError }) => {
 
-    const [token, setToken] = useState()
-
     const navigate = useNavigate()
 
     const dispatch = useDispatch()
 
+    const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+
     const handleClick = () => {
         navigate(`/product/${product.id}`)
+    }
+
+    const handleError = async () => {
+        setError(true)
+        await delay(4000)
+        setError(false)
     }
 
     const handleBtnClick = e => {
@@ -32,7 +38,7 @@ const CardProduct = ({ product, setError }) => {
                 .then(() => dispatch(getUserCart()))
                 .catch(err => console.log(err))
         } else {
-            setError(true)
+            handleError()
         }
     }
 

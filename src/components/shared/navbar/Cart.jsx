@@ -12,11 +12,21 @@ const Cart = ({ cartModal, setCartModal }) => {
 
     const dispatch = useDispatch()
 
+    const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+
     const handleReduce = (acc, item) => acc + (item.price * item.productsInCart.quantity)
 
     const [response, setResponse] = useState(false)
 
     const [error, setError] = useState(false)
+
+    const handleResponse = async () => {
+        setCartModal(false)
+        setResponse(true)
+        await delay(4000)
+        setResponse(false)
+        setError(false)
+    }
 
     const handleCheckOut = () => {
         const URL = 'https://e-commerce-api.academlo.tech/api/v1/purchases'
@@ -38,8 +48,7 @@ const Cart = ({ cartModal, setCartModal }) => {
         } else {
             setError(true)
         }
-        setCartModal(false)
-        setResponse(true)
+        handleResponse()
     }
 
     const handleAlert = () => {

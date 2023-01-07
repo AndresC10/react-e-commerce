@@ -15,30 +15,31 @@ const CartItem = ({ item }) => {
   const dispatch = useDispatch();
 
   const updateQuantity = (itemId, newQuantity) => {
-    
-      axios
-        .patch(
-          `https://e-commerce-api.academlo.tech/api/v1/cart`,
-          {
-            id: itemId,
-            newQuantity,
+
+    axios
+      .patch(
+        `https://e-commerce-api.academlo.tech/api/v1/cart`,
+        {
+          id: itemId,
+          newQuantity,
+        },
+        getConfig(),
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `${token}`,
           },
-          getConfig(),
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `${token}`,
-            },
-          }
-        )
-        .then((response) => {
-          setCounter(newQuantity);
-          setItemPrice(item.price * newQuantity);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-   
+        }
+      )
+      .then((response) => {
+        setCounter(newQuantity);
+        setItemPrice(item.price * newQuantity);
+        dispatch(getUserCart());
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
   };
 
   const handleImg = (e) => {
@@ -77,14 +78,13 @@ const CartItem = ({ item }) => {
             <div className="cart__amount__box">
               <p
                 onClick={async () => {
-                    setDisabled(true)
+                  setDisabled(true)
                   await delay(500);
-                    setDisabled(false);
+                  setDisabled(false);
                   updateQuantity(item.id, counter - 1);
                 }}
-                className={`${
-                  counter > 1 ? `cart__minus ${disabled ? "disabled" : ""} ` : `cart__minus minus`
-                }`}
+                className={`${counter > 1 ? `cart__minus ${disabled ? "disabled" : ""} ` : `cart__minus minus`
+                  }`}
               >
                 -
               </p>
