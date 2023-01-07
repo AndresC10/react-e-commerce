@@ -19,7 +19,6 @@ const Purchase = () => {
       .catch((err) => console.log(err));
   }, []);
 
-
   return (
     <>
       {purchases && Array.isArray(purchases) && purchases.length > 0 ?
@@ -27,7 +26,7 @@ const Purchase = () => {
           <h1 className="purchases__title">My Purchases</h1>
           <ul className="purchases__list">
             {purchases.slice().reverse().map((purchase) => (
-              <div className="purchases__list--container">
+              <div className="purchases__list--container" key={purchase.id}>
                 <div className="purchases__line"></div>
                 <div key={purchase.id} className="purchases__item">
                   <li className="purchases__date">

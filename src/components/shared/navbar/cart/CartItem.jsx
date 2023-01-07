@@ -45,7 +45,7 @@ const CartItem = ({ item }) => {
   const handleImg = (e) => {
     const img = products?.find((p) => {
       if (p.id == e.id) {
-        return p.productImgs[0];
+        return p;
       }
     });
     return img.productImgs[0];
