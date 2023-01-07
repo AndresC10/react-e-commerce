@@ -1,12 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Error from "../components/login/Error";
 import "../components/login/styles/login.css";
+import { getUserCart, setCart } from "../store/slices/cart.slice";
 
 const Login = () => {
   const { handleSubmit, register, reset } = useForm();
+
+  const dispatch = useDispatch()
 
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
@@ -25,6 +29,7 @@ const Login = () => {
         localStorage.setItem("user", JSON.stringify(res.data.data.user));
         setToken(res.data.data.token);
         setUser(res.data.data.user);
+        dispatch(getUserCart())
       })
       .catch((err) => {
         console.log(err)
@@ -43,6 +48,7 @@ const Login = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     setToken(null);
+    dispatch(setCart(null))
   };
 
 
