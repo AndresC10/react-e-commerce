@@ -19,7 +19,7 @@ const Footer = () => {
                     <ul className='social__list'>
                         <a href='https://github.com/OnilBlanco26' target='_blank'><i className="social__icon fa-brands fa-github"></i></a>
                         <a href='https://www.linkedin.com/in/onil-blanco-b69215259/' target='_blank'><i className="social__icon fa-brands fa-linkedin"></i></a>
-                        <a href='' target='_blank'><i className="social__icon fa-solid fa-folder"></i></a>
+                        <a href='https://react-ecommerce-onil.netlify.app/' target='_blank'><i className="social__icon fa-solid fa-folder"></i></a>
                     </ul>
                 </div>
             </div>
