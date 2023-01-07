@@ -1,10 +1,10 @@
 .navbar-container {
-    height: 60px;
     position: fixed;
-    top: 10px;
+    top: 0;
     left: 0;
     right: 0;
     z-index: 99;
+    min-height: 80px;
 }
 
 .navbar__nav {
@@ -21,7 +21,7 @@
     font-size: 1.5rem;
     flex: 1;
     display: block;
-    padding: 14px 20px;
+    padding: 18px 20px;
 }
 
 
@@ -115,7 +115,7 @@
     }
 
     .navbar-container {
-        height: 70px;
+        height: 90px;
     }
 
     .navbar__icon {
