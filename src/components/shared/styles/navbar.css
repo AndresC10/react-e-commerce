@@ -47,14 +47,63 @@
     padding: 14px;
     border: none;
     background: none;
-    font-size: 1.4rem;
-    color: #ababab;
+    font-size: 1.8rem;
+    color: #777777c2;
     line-height: 0;
 }
 
 .red {
     color: #f85555;
 }
+
+.cart__shopping--container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.cart__shopping--cant {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    top: -5px;
+    right: -29px;
+    color:  #e0e0e0;
+    border-radius: 0%;
+    cursor: pointer;
+    transition: background .5s ease, color .5s ease;
+    font-size: .9rem;
+    font-weight: bold;
+  }
+
+  .cantAnimation {
+    background: #f85555;
+    border-radius: 50%;
+    color: #fff;
+    transform: translateY(-18px);
+    transition: transform .5s ease, background .5s ease, color .5s ease, border-radius .5s ease;
+
+  }
+  .cantAnimationNone {
+    background: none;
+    color: none;
+    border-radius: none;
+    transform: translateY(0px);
+    transition: transform .5s ease, background .5s ease, color .5s ease, border-radius .5s ease;
+  }
+
+  .cantDisabled {
+    opacity: 0;
+
+  }
+
+    
+
+/* MEDIA QUERY */
 
 @media (min-width: 992px) {
     .navbar__title {
