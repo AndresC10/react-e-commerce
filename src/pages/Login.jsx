@@ -30,6 +30,7 @@ const Login = () => {
         setToken(res.data.data.token);
         setUser(res.data.data.user);
         dispatch(getUserCart())
+        dispatch(setCart(res.data.data.user.cart))
       })
       .catch((err) => {
         console.log(err)
