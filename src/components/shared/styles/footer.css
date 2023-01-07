@@ -1,0 +1,42 @@
+footer * {
+    color: #fff;
+}
+
+.footer-container {
+    background: #3c3c3b;
+    position: relative;
+    padding: 60px 0;
+}
+
+.copyright__title {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.social-container {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.social__title {
+    margin-bottom: 12px;
+}
+
+.social__list {
+    display: flex;
+    justify-content: space-around;
+}
+
+.social__icon {
+    width: 30px;
+    aspect-ratio: 1;
+    font-size: 25px;
+}
+
+.social__icon::before {
+    width: 30px;
+    height: 30px;
+}
