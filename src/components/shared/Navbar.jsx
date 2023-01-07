@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import Cart from './navbar/Cart'
@@ -47,11 +47,11 @@ const Navbar = () => {
                     <button onClick={handleCart} className={`navbar__icon ${cartModal && 'red'}`}>
                         <div className='cart__shopping--container'>
 
-                            <p className={`cart__shopping--cant ${cart?.length === 0 && "cantDisabled"} ${cartModal && cart?.length ? `cantAnimation` : 'cantAnimationNone'}`}>{cart?.length}</p>
+                            <p className={`cart__shopping--cant ${!cart?.length && "cantDisabled"} ${cartModal && cart?.length ? `cantAnimation` : 'cantAnimationNone'}`}>{cart?.length}</p>
                             <i className="fa-solid fa-cart-shopping">
-                                
+
                             </i>
-                            </div>
+                        </div>
                     </button>
                 </nav>
             </header>
