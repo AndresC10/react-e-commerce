@@ -9,6 +9,7 @@ const CartItem = ({ item }) => {
   const token = localStorage.getItem("token");
   const products = useSelector((state) => state.products);
   const [counter, setCounter] = useState(item.productsInCart.quantity);
+  const [itemPrice, setItemPrice] = useState(item.price * item.productsInCart.quantity);
   const [disabled, setDisabled] = useState(false);
   const delay = (ms) => new Promise((res) => setTimeout(res, ms));
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const CartItem = ({ item }) => {
         )
         .then((response) => {
           setCounter(newQuantity);
+          setItemPrice(item.price * newQuantity);
         })
         .catch((error) => {
           console.log(error);
@@ -108,7 +110,7 @@ const CartItem = ({ item }) => {
           </div>
           <span className="cart__subtotal">
             <span className="cart__subtotal-price">
-              {item.price * item.productsInCart.quantity}
+              {itemPrice}
             </span>
           </span>
         </div>
