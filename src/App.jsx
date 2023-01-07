@@ -10,6 +10,7 @@ import Register from './pages/Register'
 import { getUserCart } from './store/slices/cart.slice'
 import Navbar from './components/shared/Navbar'
 import Purchase from './pages/Purchase'
+import Footer from './components/shared/Footer'
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
         <Route path='/product/:id' element={<ProductInfo />} />
         <Route path='/purchase' element={<Purchase />} />
       </Routes>
+      <Footer />
     </div>
   )
 }
