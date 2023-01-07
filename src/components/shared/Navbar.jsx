@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import Cart from './navbar/Cart'
 import './styles/navbar.css'
@@ -6,6 +7,7 @@ import './styles/navbar.css'
 const Navbar = () => {
 
     const navigate = useNavigate()
+    const cart = useSelector(state => state.cart)
 
     const [cartModal, setCartModal] = useState(false)
     const [red, setRed] = useState(false)
@@ -43,7 +45,13 @@ const Navbar = () => {
                         <i className="fa-solid fa-box-archive"></i>
                     </button>
                     <button onClick={handleCart} className={`navbar__icon ${cartModal && 'red'}`}>
-                        <i className="fa-solid fa-cart-shopping"></i>
+                        <div className='cart__shopping--container'>
+
+                            <p className={`cart__shopping--cant ${cart?.length === 0 && "cantDisabled"} ${cartModal && cart?.length ? `cantAnimation` : 'cantAnimationNone'}`}>{cart?.length}</p>
+                            <i className="fa-solid fa-cart-shopping">
+                                
+                            </i>
+                            </div>
                     </button>
                 </nav>
             </header>
